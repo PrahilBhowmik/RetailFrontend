@@ -1,7 +1,12 @@
-const Product = ({ product, index, handleProductChange }) => {
-    return (
-      <div key={index}>
-        <label htmlFor={`productId-${index}`}>Product ID:</label>
+const Product = ({ product, index, handleProductChange, removeProduct }) => {
+  const handleRemoveProduct = () => {
+    removeProduct(index); // Call the prop function to remove product
+  };
+
+  return (
+    <div key={index} className="input-group mb-3" >
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <span class="input-group-text" >Product ID</span>
         <input
           type="text"
           id={`productId-${index}`}
@@ -9,9 +14,8 @@ const Product = ({ product, index, handleProductChange }) => {
           value={product.id}
           onChange={(event) => handleProductChange(index, { id: event.target.value })}
         />
-        <br />
-  
-        <label htmlFor={`productName-${index}`}>Product Name:</label>
+
+        <span class="input-group-text" >Product Name</span>
         <input
           type="text"
           id={`productName-${index}`}
@@ -19,9 +23,8 @@ const Product = ({ product, index, handleProductChange }) => {
           value={product.name}
           onChange={(event) => handleProductChange(index, { name: event.target.value })}
         />
-        <br />
-  
-        <label htmlFor={`productCategory-${index}`}>Category:</label>
+
+        <span class="input-group-text" >Category</span>
         <input
           type="text"
           id={`productCategory-${index}`}
@@ -29,9 +32,8 @@ const Product = ({ product, index, handleProductChange }) => {
           value={product.category}
           onChange={(event) => handleProductChange(index, { category: event.target.value })}
         />
-        <br />
-  
-        <label htmlFor={`productMrp-${index}`}>MRP:</label>
+
+        <span class="input-group-text" >MRP</span>
         <input
           type="number"
           id={`productMrp-${index}`}
@@ -39,9 +41,8 @@ const Product = ({ product, index, handleProductChange }) => {
           value={product.mrp}
           onChange={(event) => handleProductChange(index, { mrp: event.target.value })}
         />
-        <br />
-  
-        <label htmlFor={`productCost-${index}`}>Cost:</label>
+
+        <span class="input-group-text" >Cost</span>
         <input
           type="number"
           id={`productCost-${index}`}
@@ -49,9 +50,8 @@ const Product = ({ product, index, handleProductChange }) => {
           value={product.cost}
           onChange={(event) => handleProductChange(index, { cost: event.target.value })}
         />
-        <br />
-  
-        <label htmlFor={`productDiscount-${index}`}>Discount:</label>
+
+        <span class="input-group-text" >Discount</span>
         <input
           type="number"
           id={`productDiscount-${index}`}
@@ -59,9 +59,8 @@ const Product = ({ product, index, handleProductChange }) => {
           value={product.discount}
           onChange={(event) => handleProductChange(index, { discount: event.target.value })}
         />
-        <br />
-  
-        <label htmlFor={`productUnits-${index}`}>Units:</label>
+
+        <span class="input-group-text" >Units</span>
         <input
           type="number"
           id={`productUnits-${index}`}
@@ -69,20 +68,18 @@ const Product = ({ product, index, handleProductChange }) => {
           value={product.units}
           onChange={(event) => handleProductChange(index, { units: event.target.value })}
         />
-        <br />
-  
-        <label htmlFor={`productBrand-${index}`}>Brand:</label>
+        <span class="input-group-text" >Brand</span>
         <input
           type="text"
           id={`productBrand-${index}`}
           name="brand" // Nested name for clarity
           value={product.brand}
-          onChange={(event) => handleProductChange(index, { brand: event.target.value })}
+          onChange={(event) => handleProductChange(index, { brand: event.value })}
         />
-        <br />
+        <button type="button" class="btn btn-danger" onClick={handleRemoveProduct}>Remove Product</button>
       </div>
-    );
-  };
-  
-  export default Product;
-  
+    </div>
+  );
+};
+
+export default Product;

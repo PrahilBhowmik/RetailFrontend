@@ -6,7 +6,7 @@ const AddTransactionForm = () => {
   const [formData, setFormData] = useState({
     type: '',
     products: [],
-    date: new Date().toISOString().slice(0, 10),
+    date: new Date().toISOString(),
     userId: '6676995122fa28610553d87e', // Hardcoded for now
   });
 
@@ -49,6 +49,13 @@ const AddTransactionForm = () => {
     }
   };
 
+  const removeProduct = (index) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      products: prevState.products.filter((_, productIndex) => productIndex !== index),
+    }));
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Add Transaction</h2>
@@ -62,21 +69,21 @@ const AddTransactionForm = () => {
       </select>
       <br /><br />
 
-      {/* Enable the date input field */}
+      {/* Enable the date input field
       <label htmlFor="date">Date:</label>
       <input type="date" id="date" name="date" value={formData.date} onChange={(event) => setFormData({ ...formData, date: event.target.value })} />
-      <br/><br/>
+      <br/><br/> */}
 
       <h3>Products</h3>
       <div id="product-container">
         {formData.products.map((product, index) => (
-          <Product key={index} product={product} index={index} handleProductChange={handleProductChange} />
+          <Product key={index} product={product} index={index} handleProductChange={handleProductChange} removeProduct={removeProduct}/>
         ))}
       </div>
-      <button type="button" onClick={handleAddProduct}>Add Product</button>
-      <br/><br/>
+      <button type="button" class="btn btn-primary" onClick={handleAddProduct}>Add Product</button>
+      <br /><br />
 
-      <button type="submit">Submit Transaction</button>
+      <button type="submit" class="btn btn-success">Submit Transaction</button>
     </form>
   );
 };

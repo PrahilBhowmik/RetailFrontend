@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 const Home = ({ userId }) => {
-    userId = '6676995122fa28610553d87e';
+  userId = '6676995122fa28610553d87e';
   const [username, setUsername] = useState('');
   const [inventory, setInventory] = useState([]);
   const baseUrl = process.env.REACT_APP_RETAIL_SERVICE_API_BASE_URL; // Access base URL from .env
@@ -28,18 +28,17 @@ const Home = ({ userId }) => {
     <div>
       <h1>Homepage of {username}</h1>
       <h2>Inventory</h2>
-      <table>
+      <table className="table table-bordered table-primary table-sm table-striped">
         <thead>
           <tr>
             <th>Product Id</th>
             <th>Product Name</th>
             <th>Category</th>
-            <th>MRP</th>
-            <th>Cost</th>
+            <th>MRP(Rs.)</th>
+            <th>Cost(Rs.)</th>
             <th>Discount</th>
             <th>Units</th>
             <th>Brand</th>
-            {/* Add more headers as needed based on Product properties */}
           </tr>
         </thead>
         <tbody>
@@ -50,10 +49,9 @@ const Home = ({ userId }) => {
               <td>{product.category}</td>
               <td>{product.mrp}</td>
               <td>{product.cost}</td>
-              <td>{product.discount}</td>
+              <td>{product.discount * 100}%</td>
               <td>{product.units}</td>
               <td>{product.brand}</td>
-              {/* Add more table cells as needed based on Product properties */}
             </tr>
           ))}
         </tbody>

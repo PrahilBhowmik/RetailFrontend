@@ -24,8 +24,8 @@ const Transactions = () => {
   return (
     <div>
       <h1>Transactions</h1>
-      <table>
-        <thead>
+      <table className="table table-bordered table-primary table-sm table-striped">
+        <thead className='table-secondary'>
           <tr>
             <th>Transaction ID</th>
             <th>Date</th>
