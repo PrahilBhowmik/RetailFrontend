@@ -6,24 +6,27 @@ import Transactions from './components/Transactions';
 import Report from './components/Report';
 import Details from './components/Details';
 import AddTransactionForm from './components/AddTransactionForm'
+import NewUserForm from './components/NewUserForm';
 
 const App = () => {
-  return (
-    <Router>
+    return (
+      <Router>
       <div>
-        <Navigation />
-        <div style={{padding: "10px"}}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/transactions" element={<Transactions />} />
-            <Route path="/reports" element={<Report />} />
-            <Route path="/transactions/:id" element={<Details />} />
-            <Route path="/add_transaction" element={<AddTransactionForm />} />
-          </Routes>
-        </div>
+      <Navigation />
+      <div style={{padding: "10px"}}>
+      <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/transactions" element={<Transactions />} />
+      <Route path="/reports" element={<Report />} />
+      <Route path="/transactions/:id" element={<Details />} />
+      <Route path="/add_transaction" element={<AddTransactionForm />} />
+      <Route path="/new_user" element={<NewUserForm />} />
+      </Routes>
       </div>
-    </Router>
-  );
-};
-
-export default App;
+      </div>
+      </Router>
+    );
+  };
+  
+  export default App;
+  

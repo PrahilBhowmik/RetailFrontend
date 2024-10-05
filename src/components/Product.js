@@ -74,7 +74,7 @@ const Product = ({ product, index, handleProductChange, removeProduct }) => {
           id={`productBrand-${index}`}
           name="brand" // Nested name for clarity
           value={product.brand}
-          onChange={(event) => handleProductChange(index, { brand: event.value })}
+          onChange={(event) => handleProductChange(index, { brand: event.target.value })}
         />
         <button type="button" class="btn btn-danger" onClick={handleRemoveProduct}>Remove Product</button>
       </div>

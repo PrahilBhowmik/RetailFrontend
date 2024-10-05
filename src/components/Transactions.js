@@ -4,14 +4,13 @@ import axios from 'axios'; // Import axios (optional, can be removed)
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
-  const baseUrl = process.env.REACT_APP_RETAIL_SERVICE_API_BASE_URL; // Use base URL from env variable
-  const userId = '6676995122fa28610553d87e';
+  const baseUrl = process.env.REACT_APP_RETAIL_SERVICE_API_BASE_URL;
 
   // Simulate fetching transactions from database (replace with actual API call)
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/transactions/${userId}`); // Use template literal and baseUrl (optional)
+        const response = await axios.get(`${baseUrl}/transactions`,{withCredentials: true, maxRedirects: 0}); // Use template literal and baseUrl (optional)
         const data = response.data;
         setTransactions(data);
       } catch (error) {
